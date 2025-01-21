@@ -56,24 +56,24 @@ void temp_sensor_loop(){
 
 
 void mpu_setup(){
-  Wire.beginTransmission(0x68); //开启MPU6050的传输
-  Wire.write(0x6B); //指定寄存器地址
-  Wire.write(0); //写入一个字节的数据0
-  Wire.endTransmission(true); //结束传输释放总线
-  Wire.beginTransmission(0x68); //开启MPU6050的传输
-  Wire.write(Accel_conf); //指定寄存器地址
+  Wire.beginTransmission(0x68);
+  Wire.write(0x6B); 
+  Wire.write(0); 
+  Wire.endTransmission(true); 
+  Wire.beginTransmission(0x68); 
+  Wire.write(Accel_conf); 
   Wire.write(0x10);
-  Wire.endTransmission(true); //结束传输释放总线
-  Wire.beginTransmission(0x68); //开启MPU6050的传输
-  Wire.write(Gyro_conf); //指定寄存器地址
+  Wire.endTransmission(true); 
+  Wire.beginTransmission(0x68); 
+  Wire.write(Gyro_conf); 
   Wire.write(0x08);
-  Wire.endTransmission(true); //结束传输释放总线
+  Wire.endTransmission(true); 
 }
 
 void mpu_loop(){
   
-  Wire.beginTransmission(MPU_addr); //开启MPU6050的传输
-  Wire.write(Accel_1); //指定寄存器地址
+  Wire.beginTransmission(MPU_addr);
+  Wire.write(Accel_1); 
   Wire.endTransmission();
   Wire.requestFrom(MPU_addr,14);
   for(int i=0;i<3;i++){
