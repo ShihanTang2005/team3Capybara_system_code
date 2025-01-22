@@ -26,29 +26,68 @@ byte Temp_H = 0;
 Adafruit_BMP280 bme;
 ////////////////////////////////
   
+
+enum Canset_state{
+  INFLIGHT,
+  LANDED,
+  ROVERING1,
+  ROVERING2
+};
+Canset_state State=INFLIGHT;
+int time_tick = 0;
+int last_time_tick = 0;
+int delay_time = 500; //ms
+
 void setup() {
   Serial.begin(9600);
   //Our code starts here.
-    temp_sensor_setup();
-    mpu_setup();
-    bmp280_setup();
+  sensor_setup();
 }
-
-
 
 void loop() {
   //Our code starts here.
+  judge_canset_state();
+  ///////////////
+  sensor_loop();
+  ///////////////
+  launch_mission_under_();
+  ///////////////
+  delay(delay_time);
+  refresh_time_tick();
+}
+
+
+void judge_canset_state(){
+  if(){}
+  else if(){}
+}
+
+void launch_mission_under_State(){
+  if(State==INFLIGHT){}
+  else if(State==LANDED){}
+}
+
+void refresh_time_tick(){
+
+}
+
+void sensor_setup(){
+  temp_sensor_setup();
+  mpu_setup();
+  bmp280_setup();
+}
+
+void sensor_loop(){
   temp_sensor_loop();
   mpu_loop();
   bmp280_loop();
-  ///////////////
-  delay(500);
 }
+
 
 void temp_sensor_setup(){}
 
 void temp_sensor_loop(){
-  
+
   tempSensorValue = analogRead(analogInPin);
   tempSensorValue = tempSensorValue*5000/1023*1/10;
   Serial.println(tempSensorValue,1);
