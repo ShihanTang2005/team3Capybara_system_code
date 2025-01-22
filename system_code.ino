@@ -31,7 +31,8 @@ enum Canset_state{
   INFLIGHT,
   LANDED,
   ROVERING1,
-  ROVERING2
+  ROVERING2,
+  RECOVERY
 };
 Canset_state State=INFLIGHT;
 int time_tick = 0;
@@ -46,20 +47,35 @@ void setup() {
 
 void loop() {
   //Our code starts here.
-  judge_canset_state();
-  ///////////////
   sensor_loop();
   ///////////////
-  launch_mission_under_();
+  launch_mission_under_State();
   ///////////////
   delay(delay_time);
   refresh_time_tick();
 }
 
 
-void judge_canset_state(){
-  if(){}
-  else if(){}
+void switch_canset_state(){
+  switch (State)
+  {
+  case INFLIGHT:
+    State=LANDED;
+    break;
+  case LANDED:
+    State=ROVERING1;
+    break;
+  case ROVERING1:
+    State=ROVERING2;
+    break;
+  case ROVERING2:
+    State=RECOVERY;
+    break;
+  case RECOVERY:
+    break;
+  default:
+    break;
+  }
 }
 
 void launch_mission_under_State(){
