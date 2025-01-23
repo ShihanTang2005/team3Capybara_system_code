@@ -1,65 +1,110 @@
 #include <Wire.h>
 #include <Adafruit_BMP280.h>
-
 #include "mpu.h"
-
 ///////constant variable///////
 /////////temp_sensor/////////
 const int analogInPin = A3;
 /////////mpu////////////
-const int MPU_addr = 0x68;
-const byte PWR_MGMT_1 = 0x6B;
-const byte WHO_AM_I = 0X75;
-const byte Temp_1 = 0x41;
-const byte Accel_1 = 0x3B;
-const byte Accel_conf = 0x1C;
-const byte Gyro_conf = 0x1B;
+extern const int MPU_addr;
+extern const byte PWR_MGMT_1;
+extern const byte WHO_AM_I;
+extern const byte Temp_1;
+extern const byte Accel_1;
+extern const byte Accel_conf;
+extern const byte Gyro_conf;
 //////////////////////////////
-
-///////states/////////
-enum Canset_state={
-  INFLIGHT,
-  LANDED,
-  ROVERING
-};
-
 
 ///////Global variables//////////
 /////temp_sensor////
 float tempSensorValue = 0;
 /////mpu//////
-byte Temp_H = 0;
-  byte Temp_L = 0;
-  float Accel[3]={0};
-  float Gyro[3]={0};
+extern byte Temp_H ;
+extern  byte Temp_L ;
+extern  float Accel[3];
+extern  float Gyro[3];
 
 /////bmp280//////
 Adafruit_BMP280 bme;
 ////////////////////////////////
   
+
+enum Canset_state{
+  INFLIGHT,
+  LANDED,
+  ROVERING1,
+  ROVERING2,
+  RECOVERY
+};
+Canset_state State=INFLIGHT;
+int time_tick = 0;
+int last_time_tick = 0;
+int delay_time = 500; //ms
+
 void setup() {
   Serial.begin(9600);
   //Our code starts here.
-    temp_sensor_setup();
-    mpu_setup();
-    bmp280_setup();
+  sensor_setup();
 }
-
-
 
 void loop() {
   //Our code starts here.
+  sensor_loop();
+  ///////////////
+  launch_mission_under_State();
+  ///////////////
+  delay(delay_time);
+  refresh_time_tick();
+}
+
+
+void switch_canset_state(){
+  switch (State)
+  {
+  case INFLIGHT:
+    State=LANDED;
+    break;
+  case LANDED:
+    State=ROVERING1;
+    break;
+  case ROVERING1:
+    State=ROVERING2;
+    break;
+  case ROVERING2:
+    State=RECOVERY;
+    break;
+  case RECOVERY:
+    break;
+  default:
+    break;
+  }
+}
+
+void launch_mission_under_State(){
+  if(State==INFLIGHT){}
+  else if(State==LANDED){}
+}
+
+void refresh_time_tick(){
+
+}
+
+void sensor_setup(){
+  temp_sensor_setup();
+  mpu_setup();
+  bmp280_setup();
+}
+
+void sensor_loop(){
   temp_sensor_loop();
   mpu_loop();
   bmp280_loop();
-  ///////////////
-  delay(500);
 }
+
 
 void temp_sensor_setup(){}
 
 void temp_sensor_loop(){
-  
+
   tempSensorValue = analogRead(analogInPin);
   tempSensorValue = tempSensorValue*5000/1023*1/10;
   Serial.println(tempSensorValue,1);
