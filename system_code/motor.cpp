@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "motor.h"
 
-void motorSetup() {
+void motor_setup() {
   pinMode(IN1, OUTPUT);
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
