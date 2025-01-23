@@ -1,5 +1,5 @@
-#ifndef GPS
-#define GPS
+#ifndef GPS_H
+#define GPS_H
 void GPS_setup();
 void GPS_loop();
 void GPS_displayInfo();

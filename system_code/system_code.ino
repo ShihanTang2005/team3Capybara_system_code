@@ -4,9 +4,11 @@
 #include <SoftwareSerial.h>
 #include "mpu.h"
 #include "GPS.h"
+#include "bmp280.h"
+#include "temp_sensor.h"
 ///////constant variable///////
 /////////temp_sensor/////////
-const int analogInPin = A3;
+
 /////////mpu////////////
 extern const int MPU_addr;
 extern const byte PWR_MGMT_1;
@@ -19,7 +21,7 @@ extern const byte Gyro_conf;
 
 ///////Global variables//////////
 /////temp_sensor////
-float tempSensorValue = 0;
+
 /////mpu//////
 extern byte Temp_H ;
 extern  byte Temp_L ;
@@ -27,7 +29,6 @@ extern  float Accel[3];
 extern  float Gyro[3];
 
 /////bmp280//////
-extern Adafruit_BMP280 bme;
 ////////////////////////////////
   
 
@@ -107,12 +108,6 @@ void sensor_loop(){
 }
 
 
-void temp_sensor_setup(){}
 
-void temp_sensor_loop(){
 
-  tempSensorValue = analogRead(analogInPin);
-  tempSensorValue = tempSensorValue*5000/1023*1/10;
-  Serial.println(tempSensorValue,1);
-}
 
