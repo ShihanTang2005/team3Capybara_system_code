@@ -9,9 +9,9 @@ BMP280 bmp;
 MPU mpu;
 TempSensor tempSensor;
 
-void setup() {
+void XbeeSetup() {
     Serial.begin(9600);  // UART for debugging
-    Serial1.begin(9600); // XBee communication (use Hardware Serial)
+    Serial1.begin(9600); // XBee communication (Hardware Serial)
 
     // Initialize each sensor
     gps.begin();
@@ -24,7 +24,7 @@ void setup() {
     Serial.println("Index, Time (ms), GPS (Lat,Lon), Pressure (hPa), AccelX (g), Temp (°C)");
 }
 
-void loop() {
+void XbeeLoop() {
     // 1. Read data from each sensor
     static int index = 1;                 // Incrementing index
     String gpsData = gps.getData();       // GPS data
