@@ -6,6 +6,7 @@
 #include "GPS.h"
 #include "bmp280.h"
 #include "temp_sensor.h"
+#include "servo.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 
@@ -52,11 +53,13 @@ void setup() {
   //Our code starts here.
   sensor_setup();
   xbee_setup(); 
+  servo_setup();
 }
 
 void loop() {
   //Our code starts here.
   sensor_loop();
+  servo_loop(); 
   ///////////////
   launch_mission_under_State();
   ///////////////
