@@ -116,14 +116,3 @@ void temp_sensor_loop(){
   Serial.println(tempSensorValue,1);
 }
 
-
-
-
-void bmp280_setup(){
-  bme.begin();
-}
-
-void bmp280_loop(){
-  Serial.print("BMP pressure: ");Serial.print(bme.readPressure()/100);Serial.println("[hPa]");
-    Serial.print("Altitude: ");Serial.print(bme.readAltitude(1013.25));Serial.println("[m]");
-}
