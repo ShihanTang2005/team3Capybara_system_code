@@ -1,8 +1,6 @@
 #include "Xbee.h"
 
 void xbee_setup() {
-  Serial1.begin(9600); 
-  Serial1.println("XBee initialized"); 
 }
 
 void xbee_loop() {

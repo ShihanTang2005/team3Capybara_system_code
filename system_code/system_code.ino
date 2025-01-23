@@ -6,6 +6,7 @@
 #include "GPS.h"
 #include "bmp280.h"
 #include "temp_sensor.h"
+#include "Xbee.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 
