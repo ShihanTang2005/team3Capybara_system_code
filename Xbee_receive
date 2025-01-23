@@ -1,0 +1,19 @@
+void setup() {
+    Serial.begin(9600);  // Serial Monitor for debugging
+    Serial1.begin(9600); // XBee communication (Hardware Serial)
+
+    // Print a header for debugging
+    Serial.println("Receiving data from XBee...");
+    Serial.println("Index, Time (ms), GPS (Lat,Lon), Pressure (hPa), AccelX (g), Temp (°C)");
+}
+
+void loop() {
+    // Check if data is available from the XBee
+    if (Serial1.available()) {
+        // Read the incoming data packet
+        String receivedData = Serial1.readStringUntil('\n'); // Read until newline character
+
+        // Display the received data on the Serial Monitor
+        Serial.println("Received: " + receivedData);
+    }
+}
