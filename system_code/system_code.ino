@@ -8,6 +8,7 @@
 #include "temp_sensor.h"
 #include "Xbee.h"
 #include "system_code.h"
+#include "motor.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 
@@ -36,6 +37,7 @@ void setup() {
   //Our code starts here.
   sensor_setup();
   xbee_setup(); 
+  motor_setup();     
 }
 
 void loop() {
@@ -43,6 +45,8 @@ void loop() {
   sensor_loop();
   ///////////////
   launch_mission_under_State();
+  ///////////////
+  handleMotorCommands();      
   ///////////////
   delay(delay_time);
   refresh_time_tick();
@@ -75,6 +79,28 @@ void launch_mission_under_State(){
   if(State==INFLIGHT){}
   else if(State==LANDED){}
 }
+
+
+void handleMotorCommands() {
+  if (Serial.available()) {
+    String command = Serial.readStringUntil('\n');
+    command.trim(); // Remove unnecessary whitespace
+
+    // Execute motor commands
+    if (command == "go") {
+      goForward();               
+    } else if (command == "back") {
+      goBackward();             
+    } else if (command == "clk1") {
+      rotateClockwise();       
+    } else if (command == "clk2") {
+      rotateCounterClockwise(); 
+    } else if (command == "stop") {
+      stopMotors();            
+    }
+  }
+}
+
 
 void refresh_time_tick(){
 
