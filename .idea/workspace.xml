@@ -12,9 +12,15 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3769776-6f7e-4d17-a5f2-041b36afa6a6" name="更改" comment="fix:add an extern to the global variable bme">
+    <list default="true" id="c3769776-6f7e-4d17-a5f2-041b36afa6a6" name="更改" comment="feat: move enum states into system_code.h">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system_code/GPS.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/GPS.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/Xbee.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/Xbee.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/Xbee.h" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/Xbee.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/bmp280.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/bmp280.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/mpu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/mpu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/system_code.ino" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/system_code.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/temp_sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/temp_sensor.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +85,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737641299800</updated>
       <workItem from="1737641300915" duration="956000" />
-      <workItem from="1737642512106" duration="3433000" />
+      <workItem from="1737642512106" duration="5932000" />
     </task>
     <task id="LOCAL-00001" summary="feat: disattribute mpu.cpp and mpu.h">
       <option name="closed" value="true" />
@@ -121,7 +127,31 @@
       <option name="project" value="LOCAL" />
       <updated>1737648958573</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix:remove extra delay in GPS functions">
+      <option name="closed" value="true" />
+      <created>1737659092941</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1737659092941</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix:add Xbee.h into system_code.ino and remove the redundant code in xbee_setup">
+      <option name="closed" value="true" />
+      <created>1737660054359</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1737660054359</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: move enum states into system_code.h">
+      <option name="closed" value="true" />
+      <created>1737660286093</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737660286093</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,6 +186,9 @@
     <MESSAGE value="feat: bmp280.cpp and bmp280.h" />
     <MESSAGE value="fix:remove bmp280 functions in system_code.ino" />
     <MESSAGE value="fix:add an extern to the global variable bme" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix:add an extern to the global variable bme" />
+    <MESSAGE value="fix:remove extra delay in GPS functions" />
+    <MESSAGE value="fix:add Xbee.h into system_code.ino and remove the redundant code in xbee_setup" />
+    <MESSAGE value="feat: move enum states into system_code.h" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: move enum states into system_code.h" />
   </component>
 </project>

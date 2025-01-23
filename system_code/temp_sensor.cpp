@@ -7,5 +7,4 @@ void temp_sensor_loop(){
 
   tempSensorValue = analogRead(analogInPin);
   tempSensorValue = tempSensorValue*5000/1023*1/10;
-  Serial.println(tempSensorValue,1);
 }

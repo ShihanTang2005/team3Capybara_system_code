@@ -7,6 +7,7 @@
 #include "bmp280.h"
 #include "temp_sensor.h"
 #include "Xbee.h"
+#include "system_code.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 
@@ -20,14 +21,6 @@ extern const byte Accel_conf;
 extern const byte Gyro_conf;
 //////////////////////////////
 
-///////Global variables//////////
-/////temp_sensor////
-
-/////mpu//////
-extern byte Temp_H ;
-extern  byte Temp_L ;
-extern  float Accel[3];
-extern  float Gyro[3];
 
 
 Canset_state State=INFLIGHT;
@@ -102,10 +95,3 @@ void sensor_loop(){
   GPS_loop();
   xbee_loop();
 }
-
-
-
-
-
-
-

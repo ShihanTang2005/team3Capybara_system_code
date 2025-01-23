@@ -13,6 +13,11 @@ TinyGPSPlus gps;
 // Create a software serial port called "gpsSerial"
 SoftwareSerial gpsSerial(RXPin, TXPin);
 
+float lat = 0;
+float lng = 0;
+float alt = 0;
+
+
 void GPS_setup()
 {
   // Start the Arduino hardware serial port at 9600 baud
@@ -49,42 +54,35 @@ void GPS_displayInfo()
 
 
 void GPS_displayInfo_ON(){
-    Serial.print("Latitude: ");
-    Serial.println(gps.location.lat(), 6);
-    Serial.print("Longitude: ");
-    Serial.println(gps.location.lng(), 6);
-    Serial.print("Altitude: ");
-    Serial.println(gps.altitude.meters());
+    lat = gps.location.lat();
+    lng = gps.location.lng();
+    alt = gps.altitude.meters();
   
-  Serial.print("Date: ");
-    Serial.print(gps.date.month());
-    Serial.print("/");
-    Serial.print(gps.date.day());
-    Serial.print("/");
-    Serial.println(gps.date.year());
+//  Serial.print("Date: ");
+//    Serial.print(gps.date.month());
+//    Serial.print("/");
+//    Serial.print(gps.date.day());
+//    Serial.print("/");
+//    Serial.println(gps.date.year());
 
-  Serial.print("Time: ");
-    if (gps.time.hour() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.hour());
-    Serial.print(":");
-    if (gps.time.minute() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.minute());
-    Serial.print(":");
-    if (gps.time.second() < 10) Serial.print(F("0"));
-    Serial.print(gps.time.second());
-    Serial.print(".");
-    if (gps.time.centisecond() < 10) Serial.print(F("0"));
-    Serial.println(gps.time.centisecond());
-  Serial.println();
-  Serial.println();
+//  Serial.print("Time: ");
+//    if (gps.time.hour() < 10) Serial.print(F("0"));
+//    Serial.print(gps.time.hour());
+//    Serial.print(":");
+//    if (gps.time.minute() < 10) Serial.print(F("0"));
+//    Serial.print(gps.time.minute());
+//    Serial.print(":");
+//    if (gps.time.second() < 10) Serial.print(F("0"));
+//    Serial.print(gps.time.second());
+//    Serial.print(".");
+//    if (gps.time.centisecond() < 10) Serial.print(F("0"));
+//    Serial.println(gps.time.centisecond());
+//  Serial.println();
+//  Serial.println();
 }
 
 void GPS_displayInfo_OFF(){
-  Serial.println("Location: Not Available");
-  Serial.print("Date: ");
-  Serial.println("Not Available");
-  Serial.print("Time: ");
-  Serial.println("Not Available");
-  Serial.println();
-  Serial.println();
+  lat = -1;
+  lng = -1;
+  alt = -1;
 }

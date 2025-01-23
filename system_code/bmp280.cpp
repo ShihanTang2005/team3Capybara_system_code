@@ -5,11 +5,15 @@
 #include "bmp280.h"
 
 Adafruit_BMP280 bme;
+
+float bme_pressure = 0;
+float bme_altitude = 0;
+
 void bmp280_setup(){
     bme.begin();
 }
 
 void bmp280_loop(){
-    Serial.print("BMP pressure: ");Serial.print(bme.readPressure()/100);Serial.println("[hPa]");
-    Serial.print("Altitude: ");Serial.print(bme.readAltitude(1013.25));Serial.println("[m]");
+    bme_pressure = bme.readPressure()/100;
+    bme_altitude = bme.readAltitude(1013.25);
 }

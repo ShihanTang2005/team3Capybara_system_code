@@ -9,10 +9,11 @@ const byte Accel_1 = 0x3B;
 const byte Accel_conf = 0x1C;
 const byte Gyro_conf = 0x1B;
 
-byte Temp_H = 0;
-  byte Temp_L = 0;
-  float Accel[3]={0};
-  float Gyro[3]={0};
+
+
+float Accel_final[3]={0};
+float Gyro_final[3]={0};
+
 void mpu_setup(){
     Wire.beginTransmission(0x68);
     Wire.write(0x6B);
@@ -29,7 +30,10 @@ void mpu_setup(){
 }
 
 void mpu_loop(){
-
+    byte Temp_H = 0;
+    byte Temp_L = 0;
+    float Accel[3]={0};
+    float Gyro[3]={0};
     Wire.beginTransmission(MPU_addr);
     Wire.write(Accel_1);
     Wire.endTransmission();
@@ -42,31 +46,28 @@ void mpu_loop(){
     for(int i=0;i<3;i++){
         Gyro[i]=Wire.read()<<8|Wire.read();
     }
-//  Serial.print("Acceleration is ----");
-    float Accel_final[3]={0};
     for(int i=0;i<3;i++){
         Accel_final[i] = (float)Accel[i]/4096;
     }
-    float Gyro_final[3]={0};
     for(int i=0;i<3;i++){
         Gyro_final[i] = (float)Accel[i]/65.5;
     }
-    Serial.print("Acc-x[g]:");
-    Serial.print(Accel_final[0]);
-    Serial.print(" ");
-    Serial.print("Acc-y[g]:");
-    Serial.print(Accel_final[1]);
-    Serial.print(" ");
-    Serial.print("Acc-z[g]:");
-    Serial.print(Accel_final[2]);
-    Serial.print("Gyro-x[g]:");
-    Serial.print(Gyro_final[0]);
-    Serial.print(" ");
-    Serial.print("Gyro-y[g]:");
-    Serial.print(Gyro_final[1]);
-    Serial.print(" ");
-    Serial.print("Gyro-z[g]:");
-    Serial.println(Gyro_final[2]);
+//    Serial.print("Acc-x[g]:");
+//    Serial.print(Accel_final[0]);
+//    Serial.print(" ");
+//    Serial.print("Acc-y[g]:");
+//    Serial.print(Accel_final[1]);
+//    Serial.print(" ");
+//    Serial.print("Acc-z[g]:");
+//    Serial.print(Accel_final[2]);
+//    Serial.print("Gyro-x[g]:");
+//    Serial.print(Gyro_final[0]);
+//    Serial.print(" ");
+//    Serial.print("Gyro-y[g]:");
+//    Serial.print(Gyro_final[1]);
+//    Serial.print(" ");
+//    Serial.print("Gyro-z[g]:");
+//    Serial.println(Gyro_final[2]);
 //  Serial.println("");
 //  Serial.print("temp is ----");
 //  int temp_out = Temp_H<<8|Temp_L;
