@@ -29,17 +29,7 @@ extern  byte Temp_L ;
 extern  float Accel[3];
 extern  float Gyro[3];
 
-/////bmp280//////
-////////////////////////////////
-  
 
-enum Canset_state{
-  INFLIGHT,
-  LANDED,
-  ROVERING1,
-  ROVERING2,
-  RECOVERY
-};
 Canset_state State=INFLIGHT;
 int time_tick = 0;
 int last_time_tick = 0;
