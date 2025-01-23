@@ -44,11 +44,14 @@ int time_tick = 0;
 int last_time_tick = 0;
 int delay_time = 500; //ms
 
+///// XBee initialization function////
+//////////////////////////////////////
+
 void setup() {
   Serial.begin(9600);
   //Our code starts here.
   sensor_setup();
-
+  xbee_setup(); 
 }
 
 void loop() {
@@ -98,6 +101,7 @@ void sensor_setup(){
   mpu_setup();
   bmp280_setup();
   GPS_setup();
+  xbee_setup(); 
 }
 
 void sensor_loop(){
@@ -105,7 +109,10 @@ void sensor_loop(){
   mpu_loop();
   bmp280_loop();
   GPS_loop();
+  xbee_loop();
 }
+
+
 
 
 
