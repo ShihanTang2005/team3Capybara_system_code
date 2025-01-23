@@ -34,7 +34,6 @@ void GPS_loop()
   if (millis() > 5000 && gps.charsProcessed() < 10)
   {
     Serial.println("No GPS detected");
-    while(true);
   }
 }
 
@@ -78,7 +77,6 @@ void GPS_displayInfo_ON(){
     Serial.println(gps.time.centisecond());
   Serial.println();
   Serial.println();
-  delay(1000);
 }
 
 void GPS_displayInfo_OFF(){
@@ -89,5 +87,4 @@ void GPS_displayInfo_OFF(){
   Serial.println("Not Available");
   Serial.println();
   Serial.println();
-  delay(1000);
 }
