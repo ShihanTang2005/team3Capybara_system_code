@@ -27,7 +27,7 @@ extern  float Accel[3];
 extern  float Gyro[3];
 
 /////bmp280//////
-Adafruit_BMP280 bme;
+extern Adafruit_BMP280 bme;
 ////////////////////////////////
   
 
