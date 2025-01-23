@@ -1,6 +1,9 @@
 #include <Wire.h>
 #include <Adafruit_BMP280.h>
+#include <TinyGPS++.h>
+#include <SoftwareSerial.h>
 #include "mpu.h"
+#include "GPS.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 const int analogInPin = A3;
@@ -44,6 +47,7 @@ void setup() {
   Serial.begin(9600);
   //Our code starts here.
   sensor_setup();
+
 }
 
 void loop() {
@@ -92,12 +96,14 @@ void sensor_setup(){
   temp_sensor_setup();
   mpu_setup();
   bmp280_setup();
+  GPS_setup();
 }
 
 void sensor_loop(){
   temp_sensor_loop();
   mpu_loop();
   bmp280_loop();
+  GPS_loop();
 }
 
 

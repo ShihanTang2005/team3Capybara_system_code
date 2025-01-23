@@ -27,7 +27,7 @@ void GPS_loop()
   // This sketch displays information every time a new sentence is correctly encoded.
   while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
-      displayInfo();
+      GPS_displayInfo();
 
   // If 5000 milliseconds pass and there are no characters coming in
   // over the software serial port, show a "No GPS detected" error
@@ -38,7 +38,7 @@ void GPS_loop()
   }
 }
 
-void displayInfo()
+void GPS_displayInfo()
 {
   if (gps.location.isValid()){
     GPS_displayInfo_ON();
