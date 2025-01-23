@@ -1,0 +1,49 @@
+#include "GPS.h"
+#include "bmp280.h"
+#include "mpu.h"
+#include "temp_sensor.h"
+
+// Create objects for each sensor
+GPS gps;
+BMP280 bmp;
+MPU mpu;
+TempSensor tempSensor;
+
+void setup() {
+    Serial.begin(9600);  // UART for debugging
+    Serial1.begin(9600); // XBee communication (use Hardware Serial)
+
+    // Initialize each sensor
+    gps.begin();
+    bmp.begin();
+    mpu.begin();
+    tempSensor.begin();
+
+    // Send CSV header once for clarity
+    Serial1.println("Index, Time (ms), GPS (Lat,Lon), Pressure (hPa), AccelX (g), Temp (°C)");
+    Serial.println("Index, Time (ms), GPS (Lat,Lon), Pressure (hPa), AccelX (g), Temp (°C)");
+}
+
+void loop() {
+    // 1. Read data from each sensor
+    static int index = 1;                 // Incrementing index
+    String gpsData = gps.getData();       // GPS data
+    float pressure = bmp.readPressure(); // BMP280 pressure data
+    float accelX = mpu.getAccelX();      // MPU acceleration data (X-axis)
+    float temperature = tempSensor.readTemp(); // Temperature sensor data
+
+    // 2. Format the data into CSV format
+    String dataPacket = String(index) + ", ";           // Index
+    dataPacket += String(millis()) + ", ";              // Time in milliseconds
+    dataPacket += gpsData + ", ";                       // GPS data
+    dataPacket += String(pressure, 2) + ", ";           // Pressure (2 decimal places)
+    dataPacket += String(accelX, 2) + ", ";             // Acceleration (2 decimal places)
+    dataPacket += String(temperature, 2);              // Temperature (2 decimal places)
+
+    // 3. Transmit the data via XBee
+    Serial1.println(dataPacket); // Send data to XBee
+    Serial.println(dataPacket);  // Debugging: print to Serial Monitor
+
+    index++; // Increment index for the next packet
+    delay(1000); // Wait for 1 second before sending the next packet
+}
