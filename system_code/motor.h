@@ -6,7 +6,7 @@
 #define IN3 10
 #define IN4 11
 
-void motorSetup();
+void motor_setup();
 void goForward();
 void goBackward();
 void rotateClockwise();
