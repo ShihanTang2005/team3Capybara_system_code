@@ -12,15 +12,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3769776-6f7e-4d17-a5f2-041b36afa6a6" name="更改" comment="feat: move enum states into system_code.h">
+    <list default="true" id="c3769776-6f7e-4d17-a5f2-041b36afa6a6" name="更改" comment="feat: move extern global variables to Xbee.cpp and change Serial.print in cpp files into assigning data to global variables. Now only the Xbee.cpp is in charge of Serial's printing. :-)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/GPS.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/GPS.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/Xbee.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/Xbee.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/Xbee.h" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/Xbee.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/bmp280.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/bmp280.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/mpu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/mpu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/system_code/servo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/servo.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/system_code/system_code.ino" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/system_code.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/system_code/temp_sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/system_code/temp_sensor.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,24 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.cidr.embedded.config&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.cidr.embedded.config",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -85,7 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1737641299800</updated>
       <workItem from="1737641300915" duration="956000" />
-      <workItem from="1737642512106" duration="5932000" />
+      <workItem from="1737642512106" duration="10463000" />
     </task>
     <task id="LOCAL-00001" summary="feat: disattribute mpu.cpp and mpu.h">
       <option name="closed" value="true" />
@@ -151,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737660286093</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="feat: move extern global variables to Xbee.cpp and change Serial.print in cpp files into assigning data to global variables. Now only the Xbee.cpp is in charge of Serial's printing. :-)">
+      <option name="closed" value="true" />
+      <created>1737661004845</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1737661004845</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +192,7 @@
     <MESSAGE value="fix:remove extra delay in GPS functions" />
     <MESSAGE value="fix:add Xbee.h into system_code.ino and remove the redundant code in xbee_setup" />
     <MESSAGE value="feat: move enum states into system_code.h" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: move enum states into system_code.h" />
+    <MESSAGE value="feat: move extern global variables to Xbee.cpp and change Serial.print in cpp files into assigning data to global variables. Now only the Xbee.cpp is in charge of Serial's printing. :-)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: move extern global variables to Xbee.cpp and change Serial.print in cpp files into assigning data to global variables. Now only the Xbee.cpp is in charge of Serial's printing. :-)" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 #include <Servo.h>
 #include "servo.h"
-
+#include "Arduino.h"
 Servo myServo;
 
 void servo_setup() {
@@ -9,14 +9,6 @@ void servo_setup() {
 }
 
 void servo_loop() {
-  if (Serial.available()) {
-    String command = Serial.readStringUntil('\n');
-    command.trim();
-
-    if (command == "open") {
-      open_servo();
-    }
-  }
 }
 
 void open_servo() {

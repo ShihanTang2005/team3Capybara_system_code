@@ -9,6 +9,7 @@
 #include "Xbee.h"
 #include "system_code.h"
 #include "motor.h"
+#include "servo.h"
 ///////constant variable///////
 /////////temp_sensor/////////
 
@@ -36,8 +37,9 @@ void setup() {
   Serial.begin(9600);
   //Our code starts here.
   sensor_setup();
-  xbee_setup(); 
-  motor_setup();     
+  xbee_setup();
+  servo_setup();
+  motor_setup();
 }
 
 void loop() {
@@ -46,7 +48,8 @@ void loop() {
   ///////////////
   launch_mission_under_State();
   ///////////////
-  handleMotorCommands();      
+  servo_loop();
+  handleMotorCommands();
   ///////////////
   delay(delay_time);
   refresh_time_tick();
@@ -86,19 +89,23 @@ void handleMotorCommands() {
     String command = Serial.readStringUntil('\n');
     command.trim(); // Remove unnecessary whitespace
 
-    // Execute motor commands
-    if (command == "go") {
-      goForward();               
-    } else if (command == "back") {
-      goBackward();             
-    } else if (command == "clk1") {
-      rotateClockwise();       
-    } else if (command == "clk2") {
-      rotateCounterClockwise(); 
-    } else if (command == "stop") {
-      stopMotors();            
-    }
+      // Execute motor commands
+      if (command == "go") {
+          goForward();
+      } else if (command == "back") {
+          goBackward();
+      } else if (command == "clk1") {
+          rotateClockwise();
+      } else if (command == "clk2") {
+          rotateCounterClockwise();
+      } else if (command == "stop") {
+          stopMotors();
+      }
+      if (command == "open") {
+          open_servo();
+      }
   }
+
 }
 
 
@@ -111,7 +118,7 @@ void sensor_setup(){
   mpu_setup();
   bmp280_setup();
   GPS_setup();
-  xbee_setup(); 
+  xbee_setup();
 }
 
 void sensor_loop(){
